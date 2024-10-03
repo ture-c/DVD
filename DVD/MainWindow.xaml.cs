@@ -12,9 +12,7 @@ using System.Windows.Threading;
 
 namespace DVD
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+   
     public partial class MainWindow : Window
     {
 
