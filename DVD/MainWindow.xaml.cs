@@ -22,7 +22,7 @@ namespace DVD
         private double yPos = 0;
         private int score = 0;
         private DispatcherTimer timer;
-        private DispatcherTimer textTimer;
+       
 
         public MainWindow()
         {
@@ -92,6 +92,11 @@ namespace DVD
                 case Key.Down:
                     yPos += 5;
                     break;
+                case Key.Space:
+                    TimedText.Text = string.Empty;  // Tar bort texten.
+                    TimedText.Visibility = Visibility.Collapsed;  // Döljer textblock.
+                    e.Handled = true;  // Markerar event som hanterad. 
+                    break;
             }
     
                 double canvasWidth = mainBackground.ActualWidth;
@@ -128,28 +133,11 @@ namespace DVD
         }
 
 
+
         private void ShowTimedText()
         {
             TimedText.Visibility = Visibility.Visible;
-
-            
-            textTimer = new DispatcherTimer();
-            textTimer.Interval = TimeSpan.FromSeconds(10);
-            textTimer.Tick += HideMessage;
-            textTimer.Start();
-
-
-
-        }
-        private void HideMessage(object sender, EventArgs e)
-        {
-            TimedText.Visibility = Visibility.Collapsed;
-
-            
-            textTimer.Stop();
-
-
-
+            TimedText.Text = "WELCOME TO DVD-GAME.\nCONTROL THE LOGO USING ARROWS.\nPRESS SPACE TO HIDE THIS MESSAGE.";
         }
 
     }
